@@ -1,0 +1,163 @@
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="col-lg-12">
+                <div class="card-body p-md-5 mx-md-4">
+  
+                  <div class="text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                      style="width: 185px;" alt="logo">
+                    <h5 class="mt-1 mb-5 pb-1">Have a nice trip Adding Your Job</h5>
+                  </div>
+  
+                  <form (ngSubmit)="FormSubmit()" #f="ngForm">
+                    <div class="form-outline mb-4">
+                      <input   class="form-control" 
+                      placeholder="Example: Ingénieur DevOps Sénior" id="Job_Name" name="JobName" ngModel required #JobName="ngModel" />
+                      <span *ngIf="!JobName.valid &&JobName.touched">please enter a valid job name <br></span>
+                      <label class="form-label" for="JobName">Job Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input class="form-control" 
+                      placeholder="Example: Le rôle principal de ce poste est de construire des algorithmes innovants" 
+                      id="Job_Desc" name="JobDesc" ngModel required #JobDesc="ngModel" />
+                      <span *ngIf="!JobDesc.valid &&JobDesc.touched">please enter a valid job Desc <br></span>
+                      <label class="form-label" for="JobName">Job Description</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" aria-label=".form-select-lg example" id="Ctr_Code" name = "CtrCode" ngModel required #CtrCode="ngModel">
+                        <option value="cdd">cdd</option>
+                        <option value="cdi">cdi</option> 
+                        <option value="ctt">ctt</option>
+                      </select> 
+                      <label for="user">Contract Type</label>
+                  </div>
+  
+                    <div class="form-outline mb-4">
+                        <select class="form-control" aria-label=".form-select-lg example" id="Job_Mode" name = "JobMode" ngModel #JobMode="ngModel">
+                          <option value="full-time">full-time</option>
+                          <option value="part-time">part-time</option>
+                        </select>
+                        <label for="user">Job Mode </label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input class="form-control" placeholder="Example: 2024-02-02" 
+                        id="Experation_Date_Job" name="ExperationDateJob" ngModel #ExperationDateJob="ngModel"/>
+                        <label class="form-label" for="form2Example11">Experation Date Job</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" aria-label=".form-select-lg example"
+                      id="Job Level" name = "JobLevel" ngModel required #JobLevel="ngModel">
+                        <option value="Confirmed / experienced">Confirmed / Experienced</option>
+                        <option value="Team leader">Team Leader</option>  
+                        <option value="Manager / department manager">Manager / Department Manager</option>
+                        <option value="Young graduate">Young Graduate</option>
+                        <option value="Beginner / Junior">Beginner / Junior</option>  
+                        <option value="Trainee / student">Trainee / Ttudent</option>
+                      </select>
+                      <label for="user">Job Level</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input  class="form-control"
+                          placeholder="Examples : Admin_BDD, Community Manager, Développement Back-End, DevOps, Développement Front-End, Designer..." 
+                          id="Job_Domain" name="JobDomain" ngModel required #JobDomain="ngModel"/>
+                        <label class="form-label" for="form2Example11">Job Domain</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <select class="form-control" aria-label=".form-select-lg example" 
+                        id="Year_Experience_Required" name = "YearExperienceRequired" ngModel required #YearExperienceRequired="ngModel">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                        <label for="user">Year Experience Required</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" aria-label=".form-select-lg example" 
+                      id="Number_Of_Posts" name = "NumberOfPosts" ngModel required #NumberOfPosts="ngModel">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                      </select>
+                      <label for="user">Number Of Posts Required</label>
+                  </div>
+
+                    <div class="form-outline mb-4">
+                        <select class="form-control" aria-label=".form-select-lg example" 
+                        id="Frensh_Level" name = "FrenshLevel" ngModel required #FrenshLevel="ngModel">
+                          <option value="excellent">excellent</option>
+                          <option value="over-middle">over-middle</option>
+                          <option value="middle">middle</option>
+                        </select>
+                        <label for="user">Frensh Level</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <select class="form-control" aria-label=".form-select-lg example"
+                        id="English_Level" name = "EnglishLevel" ngModel required #EnglishLevel="ngModel">
+                          <option value="excellent">excellent</option>
+                          <option value="over-middle">over-middle</option>
+                          <option value="middle">middle</option>
+                        </select>
+                        <label for="user">English Level</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <select class="form-control" aria-label=".form-select-lg example"
+                        id="Grad" name = "Graduate" ngModel required #Graduate="ngModel">
+                          <option value="Master 2">Master 2</option>
+                          <option value="License">License</option>
+                        </select>
+                        <label for="user">Graduate</label>
+                    </div>
+
+
+
+                    <div class="form-outline mb-4">
+                        <button class="btn btn-info" type="submit">Add</button>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <button class="btn btn-info" type="button" (click)="NavigateHomeRec()">Turn back</button>
+                    </div>
+
+                  </form>
+  
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                  <h4 class="mb-4">We are more than just a company</h4>
+                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

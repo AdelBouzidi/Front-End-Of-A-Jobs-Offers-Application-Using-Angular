@@ -1,0 +1,59 @@
+<section class="vh-400" style="background-color: #6e700031;">
+<br>
+<div class="text-center"> 
+  <button class="rounded-pill mb-2 bg-dark text-white " (click)="HideDescription()" *ngIf="jobClicked">
+    Hide Descriptions
+  </button>
+</div>
+<div class="text-center"> 
+  <button class="rounded-pill mb-2 bg-dark text-white " (click)="JobCliked()" *ngIf="!jobClicked">
+    Show more descriptions of jobs
+  </button>
+</div>
+<div class="container overflow-hidden">
+    <div class="row gy-5">
+      <div class="col-6" *ngFor="let job of jobs">
+        <!-- <div class="card text-bg-info" style="max-width: 50rem;"> -->
+        <div class="card" style="background-color: whitesmoke">
+          <div class="card-header text-center">        
+              <h4>{{ job.jobName }}</h4>
+          </div>
+          <div class="card-body">
+            <!-- <h5 class="card-title">{{ job.jobName }}</h5> -->
+            <p class="card-text">{{ job.jobDesc }}</p>
+          </div>
+          <div class="float-left ms-3 me-2" *ngIf="jobClicked">
+              Job Level : {{ job.jobLevel }}<br><br>
+              Experation Date : {{ job.jobExpDate }}<br><br>
+              Job Mode : {{ job.jobMode }}<br><br>
+              Number Of Posts : {{ job.numberOfPosts }}<br><br>
+              Year Of Experience Required : {{ job.yearExperienceRequired }}<br><br>
+          </div>
+          <div class="align-self-end  me-2 mb-2" *ngIf="appBtn"> 
+            <button type="button" class="btn btn-info">Apply</button> 
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+
+</section>
+
+
+
+<hr>
+<hr>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+

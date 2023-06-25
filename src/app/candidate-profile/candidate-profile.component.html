@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img class="card-img-top" src="https://previews.123rf.com/images/zentilia/zentilia1009/zentilia100900052/7827009-rendu-3d-de-la-lettre-a-en-m%C3%A9tal-or-sur-un-blanc-isol%C3%A9es-de-fond.jpg" alt="Profile Picture">
+          <div class="card-body text-center">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Frontend Developer</p>
+            <a href="#" class="btn btn-primary">Contact</a>
+          </div>
+        </div>
+  
+        <div class="card mb-4">
+          <div class="card-body">
+            <h6 class="card-title">Contact Information</h6>
+            <p class="card-text">
+              <i class="fas fa-envelope"></i> john.doe@example.com<br>
+              <i class="fas fa-phone"></i> +1 123 456 7890<br>
+              <i class="fas fa-map-marker-alt"></i> New York, USA
+            </p>
+          </div>
+        </div>
+  
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title">Skills</h6>
+            <p class="card-text">
+              HTML5, CSS3, JavaScript, Angular, Bootstrap, UI/UX Design
+            </p>
+          </div>
+        </div>
+  
+        <div class="card mb-4">
+          <div class="card-body">
+            <h6 class="card-title">CV</h6>
+            <div *ngIf="selectedFile">
+              <p class="card-text">{{ selectedFile.name }}</p>
+              <button class="btn btn-primary" (click)="openCV()">Open CV</button>
+            </div>
+            <div *ngIf="!selectedFile">
+              <input type="file" (change)="onFileSelected($event)" accept=".pdf">
+              <button class="btn btn-primary" (click)="onFileUpload()">Upload</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Summary</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis congue quam at porttitor. Proin bibendum est nec sem semper, a vulputate ipsum luctus. In convallis turpis non mi eleifend elementum.</p>
+          </div>
+        </div>
+  
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Experience</h5>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Frontend Developer</h6>
+                <h6 class="card-subtitle mb-2 text-muted">ABC Company</h6>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat tellus vel erat ultricies, a finibus neque accumsan.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">UI/UX Designer</h6>
+                <h6 class="card-subtitle mb-2 text-muted">XYZ Agency</h6>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat tellus vel erat ultricies, a finibus neque accumsan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Education</h5>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Bachelor's Degree in Computer Science</h6>
+                <h6 class="card-subtitle mb-2 text-muted">University of ABC</h6>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat tellus vel erat ultricies, a finibus neque accumsan.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Web Development Certification</h6>
+                <h6 class="card-subtitle mb-2 text-muted">XYZ Institute</h6>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat tellus vel erat ultricies, a finibus neque accumsan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ng-container *ngIf="selectedFile">
+    <div class="modal fade" id="cvModal" tabindex="-1" role="dialog" aria-labelledby="cvModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cvModalLabel">{{ selectedFile.name }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe [src]="getPdfUrl()" width="100%" height="600px"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  

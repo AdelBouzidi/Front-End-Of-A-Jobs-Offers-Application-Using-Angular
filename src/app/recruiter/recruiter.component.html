@@ -1,38 +1,410 @@
-<section class="h-100 gradient-form" style="background-color: #eee;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-12">
-          <div class="card rounded-3 text-black">
-            <div class="row g-0">
-              <div class="col-lg-8">
-                <div class="card-body p-md-5 mx-md-4">
-                  <div class="card bg-light mb-3" style="max-width: 180rem;">
-                    <div class="card-header">Space To Add A New Job</div>
-                    <div class="card-body">
-                      <p class="card-text"> - Please follow the prescribed method in order to avoid any problem <button type="submit" class="btn btn-info w-25" (click)="AddJob()">Add New Job</button></p>         
-                    </div>
-                    
-                  </div>
 
-                  <!-- <div class="card bg-light mb-3" style="max-width: 180rem;">
-                    <div class="card-header">Space To Delete A Job</div>
-                    <div class="card-body">
-                      <p class="card-text"> - Please follow the prescribed method in order to avoid any problem <button type="submit" class="btn btn-info w-25">Delete Job</button></p>         
-                    </div>
-                  </div> -->
 
-                  <div class="card bg-light mb-3" style="max-width: 180rem;">
-                    <div class="card-header">Space To View My Jobs</div>
-                    <div class="card-body">
-                      <p class="card-text"> - Please follow the prescribed method in order to avoid any problem <button type="submit" class="btn btn-info w-25">See My Jobs</button></p>         
-                    </div>
+
+
+  <section class="vh-300" style="background-color: #6e700031;">
+    <br><br>
+    
+    <div class="container">
+      <div class="row">
+    
+    
+
+        </div>
+    
+        <div class="col-md-12">    
+    
+
+          <div class="container">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                Informations Personnelles
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <span class="card-title text-gras">Nom : </span> <span class="font-weight-normal">
+                      {{recruiterFname}}
+                    </span> <br>
+                    <span class="card-title text-gras">Prénom : </span> <span class="font-weight-normal">
+                      {{recruiterLname}}
+                    </span><br>
                   </div>
+                  <div class="col-md-6">
+                    <span class="card-title text-gras">Adresse : </span> <span class="font-weight-normal">
+                      {{recruiterAdress}}
+                    </span><br>
+                    <span class="card-title text-gras">Téléphone : </span> <span class="font-weight-normal">
+                      {{recruiterPhone}}
+                    </span><br>
+                  </div>
+                </div>
+
+                <hr>
+
+              </div>
+            </div>
+          </div>
+          
+
+
+
+          <br><br>
+
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="card-title"> Space Job:</h4>  <br>
+              
+              
+              <div class="card mb-3 custom-card">
+                <ul>
+                </ul>
+    
+
+    
+                <button class="btn btn-primary col-md-12" style="height: 0.8cm" (click)="afficherCarte4()">Add New Job</button>
+             
+                <div *ngIf="afficherGrandeCarte4" class="card">
+
+
+                  <div class="card col-md-12">
+                    <div class="card-body">
+                      <div class="row justify-content-center">
+                        <div class="card col-md-9">
+                          <div class="card-body">
+
+
+
+                            <div class="text-center">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                style="width: 185px;" alt="logo">
+                              <h5 class="mt-1 mb-5 pb-1">Have a nice trip Adding Your Job</h5>
+                            </div>
+            
+                            <form (ngSubmit)="FormSubmit()" #f="ngForm">
+                              <div class="form-outline mb-4">
+                                <input   class="form-control" 
+                                placeholder="Example: Ingénieur DevOps Sénior" id="Job_Name" name="JobName" ngModel required #JobName="ngModel" />
+                                <span *ngIf="!JobName.valid &&JobName.touched">please enter a valid job name <br></span>
+                                <label class="form-label" for="JobName">Job Name</label>
+                              </div>
+          
+                              <div class="form-outline mb-4">
+                                <input class="form-control" 
+                                placeholder="Example: Le rôle principal de ce poste est de construire des algorithmes innovants" 
+                                id="Job_Desc" name="JobDesc" ngModel required #JobDesc="ngModel" />
+                                <span *ngIf="!JobDesc.valid &&JobDesc.touched">please enter a valid job Desc <br></span>
+                                <label class="form-label" for="JobName">Job Description</label>
+                              </div>
+
+                              <div class="form-outline mb-4">
+                                <select class="form-control" aria-label=".form-select-lg example"
+                                id="Job Level" name = "JobLevel" ngModel required #JobLevel="ngModel">
+                                  <option value="Confirmed / experienced">Confirmed / Experienced</option>
+                                  <option value="Team leader">Team Leader</option>  
+                                  <option value="Manager / department manager">Manager / Department Manager</option>
+                                  <option value="Young graduate">Young Graduate</option>
+                                  <option value="Beginner / Junior">Beginner / Junior</option>  
+                                  <option value="Trainee / student">Trainee / Ttudent</option>
+                                </select>
+                                <label for="user">Job Level</label>
+                              </div>
+
+                              <div class="form-outline mb-4">
+                                <input class="form-control" placeholder="Example: 2024-02-02" 
+                                id="Experation_Date_Job" name="ExperationDateJob" ngModel #ExperationDateJob="ngModel"/>
+                                <label class="form-label" for="form2Example11">Experation Date Job</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <select class="form-control" aria-label=".form-select-lg example" id="Job_Mode" name = "JobMode" ngModel #JobMode="ngModel">
+                                <option value="full-time">full-time</option>
+                                <option value="part-time">part-time</option>
+                              </select>
+                              <label for="user">Job Mode </label>
+                          </div>
+
+                            <div class="form-outline mb-4">
+                              <select class="form-control" name="domainName" id="domainName" aria-label=".form-select-lg example" ngModel>
+                                <option *ngFor="let domainName of domainNames" [value]="domainName">{{ domainName }}</option>
+                              </select>
+                              <label for="domainName">Job Domain</label>
+                            </div>
+
+
+                            <div class="form-outline mb-4">
+                              <select class="form-control" name="countryName" id="countryName" aria-label=".form-select-lg example"  
+                              [(ngModel)]="COUNTRY"
+                              (ngModelChange)="GetRegion()"
+                              >
+                                <option *ngFor="let countryName of countryNames" [value]="countryName">{{ countryName }}</option>
+                              </select>
+                              <label for="countryName">Country Name</label>
+                            </div>
+        
+                            <div class="form-outline mb-4">
+                              <select class="form-control" name="regionName" id="regionName" aria-label=".form-select-lg example" ngModel>
+                                <option *ngFor="let regionName of regionNames" [value]="regionName">{{ regionName }}</option>
+                              </select>
+                              <label for="regionName">Region Name</label>
+                            </div>
+        
+          
+                              <div class="form-outline mb-4">
+                                <select class="form-control" aria-label=".form-select-lg example" id="Ctr_Code" name = "CtrCode" ngModel required #CtrCode="ngModel">
+                                  <option value="2">CDD</option>
+                                  <option value="1">CDI</option> 
+                                  <option value="3">CTT</option>
+                                </select> 
+                                <label for="user">Contract Type</label>
+                            </div>
+
+
+                            <div class="form-outline mb-4">
+                              <select class="form-control" aria-label=".form-select-lg example" 
+                              id="Number_Of_Posts" name = "NumberOfPosts" ngModel required #NumberOfPosts="ngModel">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                              </select>
+                              <label for="user">Number Of Posts Required</label>
+                          </div>
+            
+
+          
+                              <div class="form-outline mb-4">
+                                  <select class="form-control" aria-label=".form-select-lg example" 
+                                  id="Year_Experience_Required" name = "YearExperienceRequired" ngModel required #YearExperienceRequired="ngModel">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                  </select>
+                                  <label for="user">Year Experience Required</label>
+                              </div>
+        
+          
+                              <div class="form-outline mb-4">
+                                  <select class="form-control" aria-label=".form-select-lg example" 
+                                  id="Frensh_Level" name = "FrenshLevel" ngModel required #FrenshLevel="ngModel">
+                                    <option value="excellent">excellent</option>
+                                    <option value="over-middle">over-middle</option>
+                                    <option value="middle">middle</option>
+                                  </select>
+                                  <label for="user">Frensh Level</label>
+                              </div>
+          
+                              <div class="form-outline mb-4">
+                                  <select class="form-control" aria-label=".form-select-lg example"
+                                  id="English_Level" name = "EnglishLevel" ngModel required #EnglishLevel="ngModel">
+                                    <option value="excellent">excellent</option>
+                                    <option value="over-middle">over-middle</option>
+                                    <option value="middle">middle</option>
+                                  </select>
+                                  <label for="user">English Level</label>
+                              </div>
+                              <div class="form-outline mb-4">
+                                  <select class="form-control" aria-label=".form-select-lg example"
+                                  id="Grad" name = "Graduate" ngModel required #Graduate="ngModel">
+                                    <option value="Master 2">Master 2</option>
+                                    <option value="License">License</option>
+                                  </select>
+                                  <label for="Graduate">Graduate</label>
+                              </div>
+          
+          
+          
+                              <div class="form-outline mb-4">
+                                  <button class="btn btn-info" type="submit">Add</button>
+                              </div>
+
+                              <div class="alert alert-info" role="alert" *ngIf="afficherMessageHtmlJobSuccess">
+                                <p class="mb-0">{{messageHtmlJobSuccess}}</p>
+                              </div>
+
+          
+                            </form>
+
 
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+                  <button class="btn btn-secondary col-md-12" style="height: 0.8cm" (click)="HideCarte4()">Close The Window</button>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
+          <!-- <div class="alert alert-danger" role="alert" *ngIf="!experienceExist">
+            <p class="mb-0">You must enter your experiences in order to be able to apply for jobs.</p>
+          </div>
+          <div class="alert alert-info" role="alert" *ngIf="experienceExist">
+            <p class="mb-0">You have entered your experiences before, but you can add others of course.</p>
+          </div> -->
+
+
+
+
+
+
+
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="card-title"> My Jobs</h4>  <br>
+              
+              
+              <div class="card mb-3 custom-card">
+                <ul>
+                </ul>
+    
+
+    
+                <button class="btn btn-info col-md-12" style="height: 0.8cm" (click)="afficherCarte5()">Show The Offers That I Proposed</button>
+             
+                <div *ngIf="afficherGrandeCarte5" class="card">
+
+
+                  <div class="card col-md-12">
+                    <div class="card-body">
+                      <div class="row justify-content-center">
+                        <div class="card col-md-11">
+                          <div class="card-body">
+
+                            <div class="card">
+                            <div class="card-body" *ngFor="let j of jobs; let i = index;">
+                              <div class="col-md-12 card-header bg-primary text-white">
+                                <span class="card-title text-gras"></span> <span class="font-weight-normal">
+                                  <h5>Job {{i}} : {{j.jobDesc}}</h5>
+                                </span> <br>
+                              </div>
+                              <div class="row" >
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Job Name : </span> <span class="font-weight-normal">
+                                    {{j.jobName}}
+                                  </span><br>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Job Level : </span> <span class="font-weight-normal">
+                                    {{j.jobLevel}}
+                                  </span><br>
+                                </div>
+                              </div>
+
+                              <div class="row" >
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Job Experation Date: </span> <span class="font-weight-normal">
+                                    {{j.jobExpDate | date:'dd/MM/yyyy'}}
+                                  </span><br>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Job Mode : </span> <span class="font-weight-normal">
+                                    {{j.jobMode}}
+                                  </span><br>
+                                </div>
+                              </div>
+
+                              <div class="row" >
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Job Domain : </span> <span class="font-weight-normal">
+                                    {{j.domainName}}
+                                  </span><br>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Job region : </span> <span class="font-weight-normal">
+                                    {{j.regionName}}
+                                  </span><br>
+                                </div>
+                              </div>
+
+                              <div class="row" >
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Contract Type : </span> <span class="font-weight-normal">
+                                    {{j.ctrName}}
+                                  </span><br>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <span class="card-title text-uppercase font-custom">Number Of Posts Required : </span> <span class="font-weight-normal">
+                                    {{j.numberOfPosts}}
+                                  </span><br>
+                                </div>
+                              </div>
+<hr>
+                              <div class="row" >
+                                <div class="col-md-4">
+                                  <span class="card-title text-uppercase font-custom">French Level : </span> <span class="font-weight-normal">
+                                    {{j.frenchLevel}}
+                                  </span><br>
+                                </div>
+
+                                <div class="col-md-4">
+                                  <span class="card-title text-uppercase font-custom">English Level : </span> <span class="font-weight-normal">
+                                    {{j.englishLevel}}
+                                  </span><br>
+                                </div>
+
+                                <div class="col-md-4">
+                                  <span class="card-title text-uppercase font-custom"> Graduate Required : </span> <span class="font-weight-normal">
+                                    {{j.graduate}}
+                                  </span><br>
+                                </div>
+                              </div>
+              <!-- <hr> -->
+<br>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="rectangle"></div>
+                </div>
+              </div>
+
+<br><br><br>            
+                            </div>
+                            </div>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-secondary col-md-12" style="height: 0.8cm" (click)="HideCarte5()">Close The Window</button>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <br><br>
+        </div>
       </div>
-    </div>
-  </section>
+
+    </section>

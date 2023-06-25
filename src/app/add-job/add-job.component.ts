@@ -25,7 +25,6 @@ constructor(private _router: Router, private http : HttpClient) {}
 
   FormSubmit(){
     let JobPost = { 
-        JobCode: 'job-33',
         JobName: this.jobForm.value.JobName,
         JobDesc: this.jobForm.value.JobDesc,
         JobLevel: this.jobForm.value.JobLevel,
@@ -45,9 +44,12 @@ constructor(private _router: Router, private http : HttpClient) {}
       'Content-Type': 'text/json'
     })
 
-    this.http.post<JobModel>('https://localhost:7101/api/Job/CreateJob', JobPost,  {headers: Headers}).subscribe((response : any)=> {
-      console.log(response);
-   });
+  //   this.http.post<JobModel>('https://localhost:7101/api/Job/CreateJob', JobPost,  {headers: Headers}).subscribe((response : any)=> {
+  //     console.log(response);
+  //  });
+  this.http.post('https://localhost:7101/api/Job/CreateJob', JobPost,  {headers: Headers}).subscribe((response : any)=> {
+    console.log(response);
+ });
   }
 
   Formulaire(){
@@ -70,17 +72,15 @@ constructor(private _router: Router, private http : HttpClient) {}
     };
     this.body = JSON.stringify(Job);
     console.log(this.body);
-    var  headers = new HttpHeaders({
-        'Content-Type': 'text/json',
-        // 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Allow-Credentials': 'true',
-        // 'Access-Control-Allow-Methods' : 'GET, POST, OPTIONS',
-        // 'Access-Control-Allow-Headers' : 'Origin, Content-Type, Accept, X-Custom-Header, Upgrade-Insecure-Requests',
-      })
-
-    this.http.post<JobModel>('https://localhost:7101/api/JobInfo/createjob', Job,  {headers: headers}).subscribe((response : any)=> {
-       console.log(response);
-    });
+    var  Headers = new HttpHeaders({
+      'Content-Type': 'application/json',  
+    })
+    // this.http.post<JobModel>('https://localhost:7101/api/JobInfo/createjob', Job,  {headers: headers}).subscribe((response : any)=> {
+    //    console.log(response);
+    // });
+    this.http.post('https://localhost:7101/api/Job/createjob', Job,  {headers: Headers}).subscribe((response : any)=> {
+      console.log(response);
+   });
   }
 
   NavigateHomeRec(){

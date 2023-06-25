@@ -1,0 +1,98 @@
+.job-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .job-card h2 {
+    color: #333333;
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .job-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .job-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .job-info p {
+    color: #666666;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .job-actions button {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .job-actions button:not(:last-child) {
+    margin-right: 8px;
+  }
+  
+  .job-desc {
+    color: #555555;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  
+  .my-button2 {
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #ff5733;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .my-button2:hover {
+    background-color: #ff8f6b;
+  }
+  
+  .my-button2:active {
+    background-color: #c7381d;
+  }
+  
+  .my-button {
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #33ffad;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .my-button:hover {
+    background-color: #31c916;
+  }
+  
+  .my-button:active {
+    background-color: #c0f27b;
+  }
+
+  .gradient-background {
+    background-color: rgb(54, 54, 210);
+  }

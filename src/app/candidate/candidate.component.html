@@ -1,7 +1,261 @@
-<section class="vh-100" style="background-color: #6e700031;">
-    <div class="row gy-5 justify-content-center" >
-      <div class="col-11 ">
-        <div>Candidate work</div>
-      </div>  
-    </div>  
+<section class="vh-200" style="background-color: #6e700031;">
+  <br><br>
+  
+  <div class="container">
+    <div class="row">
+  
+  
+      <div class="col-md-3">
+        <div class="card mb-2" >
+          <img class="card-img-top custom-card" src="https://previews.123rf.com/images/zentilia/zentilia1009/zentilia100900052/7827009-rendu-3d-de-la-lettre-a-en-m%C3%A9tal-or-sur-un-blanc-isol%C3%A9es-de-fond.jpg" alt="Profile Picture">
+          <div class="card-body text-center">
+              <p class="card-text extraordinary-title3">{{ candidateFname }} {{ candidateLname}}</p>
+          </div>
+        </div>
+
+
+        <div class="card mb-3">
+          <div class="card-body">
+        <div class="card mb-3">
+          <div class="card-body" >
+            <h6 class="card-title">Candidate Informations</h6> 
+            <div>     
+            <span  class="extraordinary-title2">Email : </span><p>{{ candidateAdress }}</p>
+            <span  class="extraordinary-title2">Phone : </span> <p>{{ candidatePhone }}</p>
+            <span  class="extraordinary-title2">Military Service : </span>
+            <span *ngIf="candidateMs"> Passed </span>
+            <span *ngIf="!candidateMs"> Not Yet </span><br>
+            <span  class="extraordinary-title2"><br> Summary : </span><p>{{ candidateDesc }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Skills</h5>
+            <div *ngIf="skillExist"> 
+            <ul>              
+              <li *ngFor="let skill of skills">
+                <span>Skill Name: </span> <p class="clickable-word extraordinary-title2" (click)="toggleDescription()">{{ skill.skillName }}</p>
+                <span>Skill Level: </span> <p class="clickable-word extraordinary-title2" (click)="toggleDescription()">{{ skill.skillLevel }}</p>
+                <div *ngIf="showDescription" class="description">
+                  <p>{{ skill.skillDesc }}</p>
+                </div>
+              </li>
+            </ul>
+            </div> 
+            <p class="extraordinary-title4" *ngIf="skillExist">Click in one of them, if you want to read brief definitions of these skills</p>
+
+            <p class="extraordinary-title4" *ngIf="!skillExist">You have not entered your skills yet</p>
+
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                  <button class="btn btn-custom btn-1">Add New Skills </button>
+                </div>
+              </div>
+            </div>
+
+
+  
+          </div>
+        </div>
+  
+  
+        <div class="card">  
+          <div class="card-body">
+            <h5 class="card-title">Préférences</h5>
+            <div class="card">
+              <div class="card-body" *ngIf="preferenceExiste">
+                <span class="extraordinary-title2" > Desired Salary : </span> <br>  <span>{{ desiredSalary }}</span> <br>
+                <br>
+                <span class="extraordinary-title2"> Contract Job : </span> <br>  <span>{{ ctrName }}</span> <br>
+                <br>
+                <span class="extraordinary-title2"> Mobility : </span> <br>  <span>{{ prefMobility }}</span> <br>
+                <br>
+                <span class="extraordinary-title2"> Domain : </span> <br>  <span>{{ domainName }}</span> <br>
+
+            <ul>              
+              <!-- <li>
+                <span class="extraordinary-title2"> Desired Salary : </span> <br> <span>{{ preferences!.desiredSalary }}</span> <span>DR</span> <br>
+              </li> <br> -->
+
+              <!-- <li>
+              </li> <br>
+              <li>
+                <span class="extraordinary-title2"> Contract Job : </span> <br>  <span>{{ preferences.ctrName }}</span> <br>
+              </li><br>
+              <li>
+                <span class="extraordinary-title2"> Domain : </span> <br>  <span>{{ preferences.domainName }}</span> <br>
+              </li> -->
+            </ul>
+            </div>
+
+          </div>
+          <p class="extraordinary-title4" *ngIf="!preferenceExiste">You have not entered your preferences yet</p>
+
+
+
+            
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                  <button class="btn btn-custom btn-1">Add Préférence </button>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                  <button class="btn btn-custom btn-1">Update Préférence </button>
+                </div>
+              </div>
+            </div>
+
+
+  
+          </div>
+        </div>
+  
+  
+  
+      </div>
+    </div>
+  
+  
+        <!-- <div class="card mb-4">
+          <div class="card-body">
+            <h6 class="card-title">CV</h6>
+            <div *ngIf="selectedFile">
+              <p class="card-text">{{ selectedFile.name }}</p>
+              <button class="btn btn-primary" (click)="openCV()">Open CV</button>
+            </div>
+            <div *ngIf="!selectedFile">
+              <input type="file" (change)="onFileSelected($event)" accept=".pdf">
+              <button class="btn btn-primary" (click)="onFileUpload()">Upload</button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+  
+      <div class="col-md-8">
+        <!-- <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Summary</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis congue quam at porttitor. Proin bibendum est nec sem semper, a vulputate ipsum luctus. In convallis turpis non mi eleifend elementum.</p>
+          </div>
+        </div> -->
+  
+        <div class="card mb-4 custom-card">
+          <h3 class="text-center text-left gradient-background" style="color: ghostwhite;">  professionals Experiences and Formations  </h3> <br>
+          <div class="card-body">
+            <h4 class="card-title">Experiences :</h4> <br>
+            <!-- <p class="extraordinary-title4" *ngIf="candidateInfoExist">You have not entered your experiences yet</p> -->
+
+            <p class="extraordinary-title4" *ngIf="!experienceExist">You have not entered your experiences yet</p>
+
+
+            <div class="card mb-3 custom-card">
+              <ul>  
+                            
+                <li *ngFor="let experience of experiences">
+                  <p class="extraordinary-title">{{ experience.expName }}</p>
+                  <span class="extraordinary-title2">Experience Description :</span> <span> {{experience.expDesc}}</span><br>
+                  <span class="extraordinary-title2"> Experience Campany : </span> <span>{{experience.expCompany}}</span><br>
+                  <span class="extraordinary-title2"> Starting Date : </span> <span>{{experience.expSdate | date:'dd/MM/yyyy'}}</span><br>
+                  <span class="extraordinary-title2"> Ending Date : </span> <span>{{experience.expEdate | date:'dd/MM/yyyy'}}</span><br>
+                  <span class="extraordinary-title2"> The basic skill : </span> <span>{{experience.skillName}}</span><br>
+                  <span class="extraordinary-title2"> Experience Domain : </span> <span>{{experience.domainName}}</span><br>
+                  <span class="extraordinary-title2"> Country : </span> <span>{{experience.countryName}}</span><br>
+                  <span class="extraordinary-title2"> Region : </span> <span>{{experience.regionName}}</span><br>
+                </li>
+              </ul>
+              
+
+  
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-custom btn-1">Add New Experience </button>
+                  </div>
+                  <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-custom btn-2">Delete Experience </button>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+  
+           
+  
+
+  
+          </div>
+        </div>
+  
+        <div class="card mb-4 custom-card">
+          <div class="card-body">
+            <h4 class="card-title">Formations :</h4>  <br>
+            <!-- <p class="extraordinary-title4" *ngIf="candidateInfoExist">You have not entered your formations yet</p> -->
+
+            <p class="extraordinary-title4" *ngIf="!formationExist">You have not entered your formations yet</p>
+
+
+            <div class="card mb-3 custom-card">
+              <ul>
+                <li *ngFor="let formation of formations">
+                  <p class="extraordinary-title">{{ formation.formName }}</p>
+                  <span class="extraordinary-title2">Formation Grad :</span> <span> {{formation.formGrad}}</span><br>
+                  <span class="extraordinary-title2">Formation Description :</span> <span> {{formation.formDesc}}</span><br>
+                  <span class="extraordinary-title2">School Name : </span> <span>{{formation.schoolName}}</span><br>
+                  <span class="extraordinary-title2">Formation In Progress : </span> 
+                  <span *ngIf="formation.formInProg">Yes</span> <span *ngIf="!formation.formInProg">No</span> <br>
+                  <span class="extraordinary-title2">Starting Date : </span> <span>{{formation.formSdate | date:'dd/MM/yyyy'}}</span><br>
+                  <span class="extraordinary-title2">Ending Date : </span> <span>{{formation.formEdate | date:'dd/MM/yyyy'}}</span><br>
+                  <span class="extraordinary-title2">Country :</span> <span> {{formation.countryName}}</span><br>
+                  <span class="extraordinary-title2">Region :</span> <span> {{formation.regionName}}</span><br>
+                  <br>
+                </li>
+              </ul>
+  
+  
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-custom btn-1">Add New Formation </button>
+                  </div>
+                  <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-custom btn-2">Delete Formation </button>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+           
+
+          </div>
+        </div>
+  
+      
+      </div>
+    </div>
+  </div>
+  
+  <!-- <ng-container *ngIf="selectedFile">
+    <div class="modal fade" id="cvModal" tabindex="-1" role="dialog" aria-labelledby="cvModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cvModalLabel">{{ selectedFile.name }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe [src]="getPdfUrl()" width="100%" height="600px"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container> -->
+  
+  
   </section>

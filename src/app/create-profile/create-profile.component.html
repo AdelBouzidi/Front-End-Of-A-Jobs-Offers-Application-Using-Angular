@@ -1,0 +1,640 @@
+<section class="vh-200" style="background-color: #6e700031;">
+    <br><br>
+    
+    <div class="container">
+      <div class="row">
+    
+    
+        <div class="col-md-12">
+          <!-- <div class="card mb-12">
+            <div class="card-body text-center">
+                <p class="card-text extraordinary-title3">{{ candidateFname }} {{ candidateLname}}</p>
+            </div>
+          </div> -->
+  
+  
+          <!-- <div class="card mb-12">
+            <div class="card-body">
+          <div class="card mb-12">
+            <div class="card-body">
+              <h6 class="card-title">Candidate Informations</h6>      
+              <span  class="extraordinary-title2">Email : </span><p>{{ candidateAdress }}</p>
+              <span  class="extraordinary-title2">Phone : </span> <p>{{ candidatePhone }}</p>
+              <span  class="extraordinary-title2">Military Service : </span>
+              <span *ngIf="candidateMs"> Passed </span>
+              <span *ngIf="!candidateMs"> Not Yet </span><br>
+              <span  class="extraordinary-title2"><br> Summary : </span><p>{{ candidateDesc }}</p>
+            </div>
+          </div>
+          </div>
+    
+    
+    
+        </div> -->
+      </div>
+    
+
+        </div>
+    
+        <div class="col-md-12">    
+          <!-- <div class="card mb-4 custom-card">
+            <h3 class="text-center text-left gradient-background" style="color: ghostwhite;">  professionals Experiences and Formations  </h3> <br>
+            <div class="card-body">
+              <h4 class="card-title">Experiences :</h4> <br>
+              <div class="card mb-3 custom-card">
+                <ul>  
+                              
+                 
+                </ul>
+              </div>
+    
+            </div>
+          </div> -->
+    
+
+          <div class="container">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                Informations Personnelles
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <span class="card-title text-gras">Nom : </span> <span class="font-weight-normal">{{ candidateLname }}</span> <br>
+                    <span class="card-title text-gras">Prénom : </span> <span class="font-weight-normal">{{ candidateFname }}</span><br>
+                    <span class="card-title text-gras">Adresse : </span> <span class="font-weight-normal">{{ candidateAdress }}</span>
+                  </div>
+                  <div class="col-md-8">
+                    <span class="card-title text-gras">Téléphone : </span> <span class="font-weight-normal">{{ candidatePhone }}</span><br>
+                    <span class="card-title text-gras">Military Service : </span> 
+                    <span class="font-weight-normal" *ngIf="candidateMs">Passed</span>
+                    <span class="font-weight-normal" *ngIf="!candidateMs">Not Yet</span><br>
+                    <span class="card-title text-gras">Description : </span> <span class="font-weight-normal">{{ candidateDesc }}</span><br>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="alert alert-custom">
+                  <h6>profile creation percentage :</h6>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" [style.width.%]="pourcentageVariableLocal" [attr.aria-valuenow]="pourcentageVariableLocal" aria-valuemin="0" aria-valuemax="100">{{ pourcentageVariableLocal }}%</div>
+                  </div>          
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+
+          <!-- <div class="alert alert-custom">
+            <h6>profile creation percentage :</h6>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" [style.width.%]="pourcentageVariableLocal" [attr.aria-valuenow]="pourcentageVariableLocal" aria-valuemin="0" aria-valuemax="100">{{ pourcentageVariableLocal }}%</div>
+            </div>          
+          </div> -->
+          
+          
+
+          <!-- <div class="alert alert-danger" role="alert" *ngIf="candidateInfoExist">
+              <p class="mb-0">You must enter your personal information in order to be able to apply for jobs.</p>
+          </div>
+
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="card-title">Add Personal Informations :</h4>  <br>
+              <div class="card mb-3 custom-card">
+                <ul>
+                </ul>
+    
+
+    
+              </div>
+             
+            </div>
+          </div> -->
+
+
+          <br><br>
+
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="card-title"> Skills :</h4>  <br>
+              <div class="alert alert-danger" role="alert" *ngIf="!skillExist && !afficherGrandeCarte4 && showRemarkSkill">
+                <p class="mb-0">You must enter your skills in order to be able to apply for jobs.</p>
+              </div>
+              <div class="alert alert-info" role="alert" *ngIf="skillExist && !afficherGrandeCarte4 && showRemarkSkill">
+                <p class="mb-0">You have entered your skills before, but you can add others of course.</p>
+              </div>
+              
+              <div class="card mb-3 custom-card">
+                <ul>
+                </ul>
+    
+
+    
+                <button class="btn btn-primary col-md-12" style="height: 0.8cm" (click)="afficherCarte4()">Add Skill</button>
+             
+                <div *ngIf="afficherGrandeCarte4" class="card">
+
+
+                  <div class="card col-md-12">
+                    <div class="card-body">
+                      <div class="row justify-content-center">
+                        <div class="card col-md-9">
+                          <div class="card-body">
+                  <form (ngSubmit)="onFormSubmit()" #f="ngForm" *ngIf="!skillNotFoundIndList">
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="SkillNameList" id="SkillNameList" aria-label=".form-select-lg example" ngModel>
+                        <option value="CSS">CSS</option>
+                        <option value="Java Script">Java Script</option>
+                        <option value="Angular">Angular</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Dot Net Core">Dot Net Core</option>
+                        <option value="Web API">Web API</option>
+                        <option value="Grafana">Grafana</option>
+                        <option value="Docker">Docker</option>
+                        <option value="Kubernetes">Kubernetes</option>
+                        <option value="HTML">HTML</option>
+                        <option value="Java">Java</option>
+                        <option value="C Sharp">C Sharp</option>
+                        <option value="Bootstrap">Bootstrap</option>
+                        <option value="Laravel">Laravel</option>
+                        <option value="React">React</option>
+                        <option value="Vue JS">Vue JS</option>
+                        <option value="Sql Server">Sql Server</option>
+                        <option value="My Sql">My Sql</option>  
+                        <option value="Sql Lite">Sql Lite</option>
+                        <option value="Python">Python</option>
+                        <option value="Python Django">Python Django</option>
+                        <option value="WordPress">WordPress</option>
+                        <option value="Keras">Keras</option>
+                        <option value="TensorFlow">TensorFlow</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="Git">Git</option>
+                        <option value="Material Designer">Material Designer</option>
+                        <option value="Figma">Figma</option>
+                        <option value="Adobe XD">Adobe XD</option>
+                        <option value="Adobe Photoshop">Adobe Photoshop</option>
+                        <option value="Adobe Illustrator">Adobe Illustrator</option>
+                        <option value="Adobe Premiere Pro">Adobe Premiere Pro</option>
+                        <option value="Linux">Linux</option> 
+                        <option value="Sql Express 2016">Sql Express 2016</option>
+                      </select>
+                      <label for="SkillNameList">List Of Skills Suggested</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="SkillLevel" id="SkillLevel" aria-label=".form-select-lg example" ngModel>
+                        <option value="beginner">Beginner</option>
+                        <option value="middle">Middle</option>
+                        <option value="excellent">Excellent</option>
+                      </select>
+                      <label for="SkillLevel">Skill Level</label>
+                    </div>
+
+
+  
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" type="submit"> Create </button>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" *ngIf="afficherMessageHtmlSkillSuccess">
+                      <p class="mb-0">{{messageHtmlSkillSuccess}}</p>
+                      <div class="alert alert-custom">
+                        <h6>profile creation percentage :</h6>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" [style.width.%]="pourcentageVariableLocal" [attr.aria-valuenow]="pourcentageVariableLocal" aria-valuemin="0" aria-valuemax="100">{{ pourcentageVariableLocal }}%</div>
+                        </div>          
+                      </div>
+                    </div>
+                    
+                    <br> 
+                    <hr>
+                    <div class="alert alert-info" role="alert">
+                      <p class="mb-0">If you want to enter skills that are not in the previous list, you can enter it from here :</p>
+                    </div>
+                    
+                    <button class="btn btn-dark  col-md-12my-button" style="height: 1cm" (click)="AddOthersSkillsClicked()"> create custom skill </button>
+
+                  </form>
+
+                  <form (ngSubmit)="onFormSubmit2()" #g="ngForm" *ngIf="skillNotFoundIndList">
+
+                    <div class="form-outline mb-4">  
+                      <input type = "text" name = "skill" class="form-control form-control-lg" autocomplete="skillName" ngModel required #skill = 'ngModel' >
+                      <span  class="text-danger" *ngIf="!skill.valid && skill.touched">please enter a valid Skill Name <br></span>
+                      <label class="form-label" for="firstnameRecruiter">Skill Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <textarea class="form-control" rows="6" cols="40" name="Description" placeholder="The length of this field must not exceed 200 characters" ngModel required #Description="ngModel"></textarea>
+                      <span class="text-danger" *ngIf="!Description.valid && Description.touched">please enter a valid Description <br></span>
+                      <label class="form-label" for="descriptionSkill">Description
+                      </label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="SkillLevell" id="SkillLevell" aria-label=".form-select-lg example" ngModel>
+                        <option value="beginner">Beginner</option>
+                        <option value="middle">Middle</option>
+                        <option value="excellent">Excellent</option>
+                      </select>
+                      <label for="SkillLevell">Skill Level</label>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" type="submit"> Create </button>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" *ngIf="afficherMessageHtmlSkillSuccess">
+                      <p class="mb-0">{{messageHtmlSkillSuccess}}</p>
+                      <div class="alert alert-custom">
+                        <h6>profile creation percentage :</h6>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" [style.width.%]="pourcentageVariableLocal" [attr.aria-valuenow]="pourcentageVariableLocal" aria-valuemin="0" aria-valuemax="100">{{ pourcentageVariableLocal }}%</div>
+                        </div>          
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+                  <button class="btn btn-secondary col-md-12" style="height: 0.8cm" (click)="HideCarte4()">Close The Window</button>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
+          <!-- <div class="alert alert-danger" role="alert" *ngIf="!experienceExist">
+            <p class="mb-0">You must enter your experiences in order to be able to apply for jobs.</p>
+          </div>
+          <div class="alert alert-info" role="alert" *ngIf="experienceExist">
+            <p class="mb-0">You have entered your experiences before, but you can add others of course.</p>
+          </div> -->
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="card-title">Experiences :</h4>  <br>
+              <div class="alert alert-danger" role="alert" *ngIf="!experienceExist && !afficherGrandeCarte && showRemarkExp">
+                <p class="mb-0">You must enter your experiences in order to be able to apply for jobs.</p>
+              </div>
+              <div class="alert alert-info" role="alert" *ngIf="experienceExist && !afficherGrandeCarte && showRemarkExp">
+                <p class="mb-0">You have entered your experiences before, but you can add others of course.</p>
+              </div>
+              <div class="card mb-3 custom-card">
+                <ul>
+                </ul>
+    
+                <button class="btn btn-primary col-md-12" style="height: 0.8cm" (click)="afficherCarte()">Add Experience</button>
+             
+                <div *ngIf="afficherGrandeCarte" class="card">
+                  
+
+                  <div class="card col-md-12">
+                    <div class="card-body">
+                      <div class="row justify-content-center">
+                        <div class="card col-md-9">
+                          <div class="card-body">
+                            
+
+                  <form (ngSubmit)="onFormSubmit3()" #h="ngForm">
+
+                    <div class="form-outline mb-4">  
+                      <input type = "text" name = "Exp" class="form-control form-control-lg" autocomplete="Exp" ngModel required #Exp = 'ngModel' >
+                      <span  class="text-danger" *ngIf="!Exp.valid && Exp.touched">please enter a valid Experience Name <br></span>
+                      <label class="form-label" for="Exp">Experience Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <textarea class="form-control" rows="6" cols="40" name="Description" placeholder="The length of this field must not exceed 200 characters" ngModel required #Description="ngModel"></textarea>
+                      <span class="text-danger" *ngIf="!Description.valid && Description.touched">please enter a valid Description <br></span>
+                      <label class="form-label" for="descriptionSkill">Description
+                      </label>
+                    </div>
+
+                    <div class="form-outline mb-4">  
+                      <input type = "text" name = "ExpCampany" class="form-control form-control-lg" autocomplete="ExpCampany" ngModel required #ExpCampany = 'ngModel' >
+                      <span  class="text-danger" *ngIf="!ExpCampany.valid && ExpCampany.touched">please enter a valid Experience Campany Name <br></span>
+                      <label class="form-label" for="ExpCampany">Experience Campany</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="expInProg" id="expInProg" aria-label=".form-select-lg example" ngModel>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                      </select>
+                      <label for="expInProg">Experience In Progress</label>
+                    </div>
+
+                    <div class="form-outline mb-4">  
+                      <input type="text" id="ExpSdate" name ="ExpSdate" class="form-control" bsDatepicker required ngModel>
+                      <label class="form-label" for="ExpSdate">Experience Starting Date</label>
+                    </div>
+
+                    <div class="form-outline mb-4">  
+                      <input type="text" id="ExpEdate" name ="ExpEdate" class="form-control" bsDatepicker ngModel>
+                      <label class="form-label" for="ExpEdate">Experience Ending Date</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="SkillName" id="SkillName" aria-label=".form-select-lg example" ngModel>
+                        <option *ngFor="let skillName of skillNames" [value]="skillName">{{ skillName }}</option>
+                      </select>
+                      <label for="SkillName">Skill Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="domainName" id="domainName" aria-label=".form-select-lg example" ngModel>
+                        <option *ngFor="let domainName of domainNames" [value]="domainName">{{ domainName }}</option>
+                      </select>
+                      <label for="domainName">Domain Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="countryName" id="countryName" aria-label=".form-select-lg example"  
+                      [(ngModel)]="COUNTRY"
+                      (ngModelChange)="GetRegion()"
+                      >
+                        <option *ngFor="let countryName of countryNames" [value]="countryName">{{ countryName }}</option>
+                      </select>
+                      <label for="countryName">Country Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="regionName" id="regionName" aria-label=".form-select-lg example" ngModel>
+                        <option *ngFor="let regionName of regionNames" [value]="regionName">{{ regionName }}</option>
+                      </select>
+                      <label for="regionName">Region Name</label>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" type="submit"> Create </button>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" *ngIf="afficherMessageHtmlExperienceSuccess">
+                      <p class="mb-0">{{messageHtmlExperienceSuccess}}</p>
+                      <div class="alert alert-custom">
+                        <h6>profile creation percentage :</h6>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" [style.width.%]="pourcentageVariableLocal" [attr.aria-valuenow]="pourcentageVariableLocal" aria-valuemin="0" aria-valuemax="100">{{ pourcentageVariableLocal }}%</div>
+                        </div>          
+                      </div>
+                    </div>
+
+                  </form>
+                </div></div></div></div></div>
+
+
+                  <button class="btn btn-secondary col-md-12" style="height: 0.8cm" (click)="HideCarte()">Close The Window</button>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          
+          
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="card-title">Formations :</h4>  <br>
+              <div class="alert alert-danger" role="alert" *ngIf="!formationExist && !afficherGrandeCarte2 && showRemarkForm">
+                <p class="mb-0">You must enter your formations in order to be able to apply for jobs.</p>
+              </div>
+              <div class="alert alert-info" role="alert" *ngIf="formationExist && !afficherGrandeCarte2 && showRemarkForm">
+                <p class="mb-0">You have entered your formations before, but you can add others of course.</p>
+              </div>
+              <div class="card mb-3 custom-card">
+                <ul>
+                </ul>
+    
+                <button class="btn btn-primary col-md-12" style="height: 0.8cm" (click)="afficherCarte2()">Add Formation</button>
+             
+                <div *ngIf="afficherGrandeCarte2" class="card">
+
+
+                  <div class="card col-md-12">
+                    <div class="card-body">
+                      <div class="row justify-content-center">
+                        <div class="card col-md-9">
+                          <div class="card-body">
+
+                  <form (ngSubmit)="onFormSubmit4()" #r="ngForm">
+
+                    <div class="form-outline mb-4">  
+                      <input type = "text" name = "FormGrad" class="form-control form-control-lg" autocomplete="FormGrad" ngModel required #FormGrad = 'ngModel' >
+                      <span  class="text-danger" *ngIf="!FormGrad.valid && FormGrad.touched">please enter a valid Formtion Grad <br></span>
+                      <label class="form-label" for="FormGrad">Formation Grad</label>
+                    </div>
+
+                    <div class="form-outline mb-4">  
+                      <input type = "text" name = "FormName" class="form-control form-control-lg" autocomplete="FormName" ngModel required #FormName = 'ngModel' >
+                      <span  class="text-danger" *ngIf="!FormName.valid && FormName.touched">please enter a valid Formtion Name <br></span>
+                      <label class="form-label" for="FormName">Formation Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <textarea class="form-control" rows="6" cols="40" name="FormDesc" placeholder="The length of this field must not exceed 200 characters" ngModel required #FormDesc="ngModel"></textarea>
+                      <span class="text-danger" *ngIf="!FormDesc.valid && FormDesc.touched">please enter a valid Description <br></span>
+                      <label class="form-label" for="FormDesc">Description</label>
+                    </div>
+
+                    <div class="form-outline mb-4">  
+                      <input type = "text" name = "SchoolName" class="form-control form-control-lg" autocomplete="SchoolName" ngModel required #SchoolName = 'ngModel' >
+                      <span  class="text-danger" *ngIf="!SchoolName.valid && SchoolName.touched">please enter a valid School Name <br></span>
+                      <label class="form-label" for="SchoolName">School Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="FormInProg" id="FormInProg" aria-label=".form-select-lg example" ngModel>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                      </select>
+                      <label for="FormInProg">Formation In Progress</label>
+                    </div>
+
+                    <div class="form-outline mb-4">  
+                      <input type="text" id="FormSdate" name ="FormSdate" class="form-control" bsDatepicker required ngModel>
+                      <label class="form-label" for="FormSdate">Formation Starting Date</label>
+                    </div>
+
+                    <div class="form-outline mb-4">  
+                      <input type="text" id="FormEdate" name ="FormEdate" class="form-control" bsDatepicker ngModel>
+                      <label class="form-label" for="FormEdate">Formation Ending Date</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="countryName" id="countryNameForm" aria-label=".form-select-lg example"  
+                      [(ngModel)]="COUNTRY_Form"
+                      (ngModelChange)="GetRegionForm()"
+                      >
+                        <option *ngFor="let countryName of countryNames" [value]="countryName">{{ countryName }}</option>
+                      </select>
+                      <label for="countryName">Country Name</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="regionName" id="regionNameForm" aria-label=".form-select-lg example" ngModel>
+                        <option *ngFor="let regionName of regionNames" [value]="regionName">{{ regionName }}</option>
+                      </select>
+                      <label for="regionName">Region Name</label>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" type="submit"> Create </button>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" *ngIf="afficherMessageHtmlFormationSuccess">
+                      <p class="mb-0">{{messageHtmlFormationSuccess}}</p>
+                      <div class="alert alert-custom">
+                        <h6>profile creation percentage :</h6>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" [style.width.%]="pourcentageVariableLocal" [attr.aria-valuenow]="pourcentageVariableLocal" aria-valuemin="0" aria-valuemax="100">{{ pourcentageVariableLocal }}%</div>
+                        </div>          
+                      </div>
+                    </div>
+
+                  </form>
+
+
+                </div></div></div></div></div>
+
+                  <button class="btn btn-secondary col-md-12" style="height: 0.8cm" (click)="HideCarte2()">Close The Window</button>
+                </div>
+    
+              </div>
+             
+            </div>
+          </div>
+
+          
+          <div class="card mb-4 custom-card">
+            <div class="card-body">
+              <h4 class="card-title"> Preferences :</h4>  <br>
+              <div class="alert alert-danger" role="alert" *ngIf="!preferenceExist && !afficherGrandeCarte3 && showRemarkPref">
+                <p class="mb-0">You must enter your preferences in order to be able to apply for jobs.</p>
+              </div>
+              <div class="alert alert-info" role="alert" *ngIf="preferenceExist && !afficherGrandeCarte3 && showRemarkPref">
+                <p class="mb-0">You have entered your preferences before, but you can reset it.</p>
+              </div>
+              <div class="card mb-3 custom-card">
+                <ul>
+                </ul>
+    
+
+                <button class="btn btn-primary col-md-12" style="height: 0.8cm" (click)="afficherCarte3()"
+                *ngIf="!ResetPreference">Add Preference</button>
+                <button class="btn btn-primary col-md-12" style="height: 0.8cm" (click)="afficherCarte3()"
+                *ngIf="ResetPreference">reset Preference</button>
+
+                <div *ngIf="afficherGrandeCarte3" class="card">
+
+
+
+                  <div class="card col-md-12">
+                    <div class="card-body">
+                      <div class="row justify-content-center">
+                        <div class="card col-md-9">
+                          <div class="card-body">
+
+                  <form (ngSubmit)="onFormSubmit5()" #p="ngForm">
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="DesiredSalary" id="DesiredSalary" aria-label=".form-select-lg example" ngModel>
+                        <option value="10000">10.000 Dr</option>
+                        <option value="15000">15.000 Dr</option>
+                        <option value="20000">20.000 Dr</option>
+                        <option value="25000">25.000 Dr</option>
+                        <option value="30000">30.000 Dr</option>
+                        <option value="35000">35.000 Dr</option>
+                        <option value="40000">40.000 Dr</option>
+                        <option value="45000">45.000 Dr</option>
+                        <option value="50000">50.000 Dr</option>
+                        <option value="60000">60.000 Dr</option>
+                        <option value="65000">65.000 Dr</option>
+                        <option value="70000">70.000 Dr</option>
+                        <option value="75000">75.000 Dr</option>
+                        <option value="80000">80.000 Dr</option>
+                        <option value="85000">85.000 Dr</option>
+                        <option value="90000">90.000 Dr</option>
+                        <option value="95000">95.000 Dr</option>
+                        <option value="100000">100.000 Dr</option>
+                      </select>
+                      <label for="FormInProg">Desired Salary</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="PrefMobility" id="PrefMobility" aria-label=".form-select-lg example" ngModel>
+                        <option value="regional">Regional</option>
+                        <option value="national">National</option>
+                        <option value="international">International</option>
+                      </select>
+                      <label for="PrefMobility">Preference Mobility</label>
+                    </div>
+                    
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="CtrName" id="CtrName" aria-label=".form-select-lg example" ngModel>
+                        <option value="CDI">CDI</option>
+                        <option value="CDD">CDD</option>
+                        <option value="CTT">CTT</option>
+                      </select>
+                      <label for="CtrName">Contract Type</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <select class="form-control" name="domainName" id="domainNamePreference" aria-label=".form-select-lg example" ngModel>
+                        <option *ngFor="let domainName of domainNames" [value]="domainName">{{ domainName }}</option>
+                      </select>
+                      <label for="domainName">Domain Name</label>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" type="submit"> Create </button>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" *ngIf="afficherMessageHtmlPreferenceSuccess">
+                      <p class="mb-0">{{messageHtmlPreferenceSuccess}}</p>
+                      <div class="alert alert-custom">
+                        <h6>profile creation percentage :</h6>
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" [style.width.%]="pourcentageVariableLocal" [attr.aria-valuenow]="pourcentageVariableLocal" aria-valuemin="0" aria-valuemax="100">{{ pourcentageVariableLocal }}%</div>
+                        </div>          
+                      </div>
+                    </div>
+
+                  </form>
+
+
+                </div></div></div></div></div>
+
+
+                  <button class="btn btn-secondary col-md-12" style="height: 0.8cm" (click)="HideCarte3()">Close The Window</button>
+                </div>
+    
+              </div>
+             
+            </div>
+          </div>
+
+
+          
+         
+          
+
+          <br><br>
+    
+        
+        </div>
+      </div>
+    
+
+    
+    
+    </section>

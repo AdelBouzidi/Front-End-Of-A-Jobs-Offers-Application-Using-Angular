@@ -1,0 +1,23 @@
+.text-gras {
+    font-weight: bold;
+  }
+  
+  .my-button {
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #33ffad;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .my-button:hover {
+    background-color: #31c916;
+  }
+  
+  .my-button:active {
+    background-color: #c0f27b;
+  }

@@ -1,0 +1,11 @@
+#applyButton {
+    background-color: transparent; /* Set the background color to transparent */
+    border: none; /* Remove the button border */
+    padding: 0; /* Remove the button padding */
+  }
+  
+  #applyButton:hover {
+    text-decoration: underline; /* Underline the button text on hover */
+    background-color: transparent; /* Keep the background color transparent on hover */
+  }
+  

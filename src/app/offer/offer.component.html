@@ -1,14 +1,15 @@
 <section class="vh-400" style="background-color: #6e700031;">
 <br>
-<div class="text-center"> 
-  <button class="rounded-pill mb-2 bg-dark text-white " (click)="HideDescription()" *ngIf="jobClicked">
-    Hide Descriptions
-  </button>
+
+<div class="container" *ngIf="!appBtn">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">REMARK</h4>
+    <hr>
+    <p class="mb-0">You must login if you want to view more job details and submit applications.</p>
+  </div>
 </div>
+
 <div class="text-center"> 
-  <button class="rounded-pill mb-2 bg-dark text-white " (click)="JobCliked()" *ngIf="!jobClicked">
-    Show more descriptions of jobs
-  </button>
 </div>
 <div class="container overflow-hidden">
     <div class="row gy-5">
@@ -22,16 +23,24 @@
             <!-- <h5 class="card-title">{{ job.jobName }}</h5> -->
             <p class="card-text">{{ job.jobDesc }}</p>
           </div>
-          <div class="float-left ms-3 me-2" *ngIf="jobClicked">
+          <!-- <div class="float-left ms-3 me-2" *ngIf="jobClicked">
               Job Level : {{ job.jobLevel }}<br><br>
               Experation Date : {{ job.jobExpDate }}<br><br>
               Job Mode : {{ job.jobMode }}<br><br>
               Number Of Posts : {{ job.numberOfPosts }}<br><br>
               Year Of Experience Required : {{ job.yearExperienceRequired }}<br><br>
-          </div>
-          <div class="align-self-end  me-2 mb-2" *ngIf="appBtn"> 
-            <button type="button" class="btn btn-info">Apply</button> 
-          </div>
+          </div> -->
+
+          <div class="align-self-end  me-2 mb-2" *ngIf="appBtn">
+              <div class="col-md-12 d-flex justify-content-center align-items-center">
+                <button class="btn btn-link btn-custom btn-1" id="applyButton" (click)="ShowMoreClicked(job)"> Show More description And Apply<i class="fas fa-chevron-down"></i></button>
+              </div>
+          </div> 
+
+          <!-- <div *ngIf="appBtn">
+            <button (click)="ShowMoreClicked()"> Show More description And Apply</button>
+          </div> -->
+
         </div>
       </div>  
     </div>

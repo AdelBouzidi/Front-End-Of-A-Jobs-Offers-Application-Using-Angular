@@ -1,0 +1,55 @@
+<section class="vh-200" style="background-color: #6e700031;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+
+                        <h2>{{ jsonData.jobName }}</h2>
+                        <br>
+                        <div class="job-details">
+                          <div class="job-info">
+                            <span class="font-weight-bold"> Job Level : </span><span>{{ jsonData.jobLevel }}</span> <br>
+                            <span class="font-weight-bold"> Job Description : </span><p>{{ jsonData.jobDesc }}</p> <br>
+                            <span class="font-weight-bold"> Job Experation Date : </span><p>{{ jsonData.jobExpDate | date:'dd/MM/yyyy'}}</p> <br>
+                            <span class="font-weight-bold"> Job Mode : </span><p>{{ jsonData.jobMode }}</p> <br>
+                            <span class="font-weight-bold"> Job Domain : </span><p>{{ jsonData.domainName }}</p> <br>
+                            <span class="font-weight-bold"> Job Region : </span><p>{{ jsonData.regionName }}</p> <br>
+                            <span class="font-weight-bold"> Recruiter First Name : </span><p>{{ jsonData.recruiterFName }}</p> <br>
+                            <span class="font-weight-bold"> Recruiter Last Name : </span><p>{{ jsonData.recruiterLName }}</p> <br>
+                            <span class="font-weight-bold"> Recruiter Adress Mail : </span><p>{{ jsonData.recruiterMail }}</p> <br>
+                            <span class="font-weight-bold"> Contract Type :  </span><p>{{ jsonData.ctrName }}</p> <br>
+                            <span class="font-weight-bold"> Number Of Posts Requireds : </span> <p>{{ jsonData.numberOfPosts }}</p> <br>
+                            <span class="font-weight-bold"> Year Of Experience Requireds : </span><p>{{ jsonData.yearExperienceRequired }}</p> <br>
+                            <span class="font-weight-bold"> Frensh Level : </span><p>{{ jsonData.frenchLevel }}</p> <br>
+                            <span class="font-weight-bold"> English Level : </span><p>{{ jsonData.englishLevel }}</p> <br>
+                            <span class="font-weight-bold"> Gradute Required : </span><p>{{ jsonData.graduate }}</p>
+                          </div>
+                        </div>
+
+
+                        <div class="d-inline">
+                            <button class="my-button" (click)="ApplyClicked()">Apply</button>
+                        </div>
+                        <div  class="alert alert-danger" role="alert" *ngIf="showMessageError">
+                            <p>{{ messageToCreateProfile }}</p>
+                            <span>To complete creating your profile : </span>
+                            <button class="btn btn-link btn-custom btn-1" id="applyButton" (click)="ClickHereClicked()">Click here </button>
+                        </div>
+                        <div class="alert alert-info" role="alert" *ngIf="afficherMessageHtmlApplySuccess">
+                          <p class="mb-0">{{messageHtmlApplySuccess}}</p>
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="afficherMessageHtmlApplyError">
+                          <p class="mb-0">{{messageHtmlApplyError}}</p>
+                        </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>

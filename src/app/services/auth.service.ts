@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Subject, catchError, map, tap, throwError } from 'rxjs';
 import { UserModel } from '../auth/user-model';
 import jwt_decode from 'jwt-decode';
 import { User } from './user';
@@ -13,7 +13,11 @@ export class AuthService {
   url : string | undefined;
   userSub = new BehaviorSubject<User|null>(null);
   LoginLogoutButton = new BehaviorSubject<boolean|null>(null);
-  
+  LoginLogoutButton2 = new BehaviorSubject<boolean|null>(null);
+  ShowLinkProfilCandidateInHomePage = new BehaviorSubject<boolean|null>(null);
+  ShowLinkProfilRecruiterInHomePage = new BehaviorSubject<boolean|null>(null);
+
+  EmailOfUserOnline: BehaviorSubject<string> = new BehaviorSubject<string>('Valeur par défaut');
 
   clearTimeout: any;
 
@@ -23,8 +27,23 @@ export class AuthService {
   }
 
   constructor(private http: HttpClient,private router: Router) { }
-  
+
+  hideButtonLoginAndLogout(){
+    this.LoginLogoutButton2.next(true);
+  }
+  showButtonLoginAndLogout(){
+    this.LoginLogoutButton2.next(false);
+  }
+
   login(email: string, password: string, role: string){
+    
+    if(role == 'candidate'){
+      this.ShowLinkProfilCandidateInHomePage.next(true);
+    }
+    if(role == 'recruiter'){
+      this.ShowLinkProfilRecruiterInHomePage.next(true);
+    }
+    this.EmailOfUserOnline.next(email);
     var  Headers = new HttpHeaders({
       'Content-Type': 'application/json',  
     })
@@ -60,6 +79,8 @@ export class AuthService {
      user.expireDate = expireDate;
      user.token = token;
      this.userSub.next(user);
+
+
      this.LoginLogoutButton.next(true);
      localStorage.setItem('userData',JSON.stringify(user)); // JSON.stringify it will convert the object "user" into string.
      this.autoLogout(expireDate);
@@ -121,6 +142,9 @@ export class AuthService {
   }
 
   logout(){
+    this.ShowLinkProfilRecruiterInHomePage.next(false);
+    this.ShowLinkProfilCandidateInHomePage.next(false);
+    
     this.userIs.online = false;
     this.userSub.next(null);  
     this.LoginLogoutButton.next(false);

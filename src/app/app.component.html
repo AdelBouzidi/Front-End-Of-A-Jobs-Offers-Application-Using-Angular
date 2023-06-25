@@ -8,7 +8,7 @@
         alt="MDB Logo" loading="lazy" /> 
       </a></h3>
 
-      <a class="nav-link" [routerLink]="['/home']">MonterJob</a>
+      <a class="nav-link" [routerLink]="['/home']"> DzairJob</a>
        
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,18 +26,37 @@
           </li>
          
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="#"> About</a> -->
             <a class="nav-link" [routerLink]="['/about']"> About </a>
           </li>
+  
+
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex col-7" *ngIf="showLinkProfileCandidate || showLinkProfileRecruiter">
+          <input class="form-control me-20" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="showLinkProfileCandidate">
+            <a class="nav-link" [routerLink]="['/createProfile']"> Edit Profile </a>
+          </li>
+
+          <li class="nav-item" *ngIf="showLinkProfileCandidate">
+            <a class="nav-link" [routerLink]="['/candidate']"> My Profile </a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="showLinkProfileRecruiter">
+            <a class="nav-link" [routerLink]="['/recruiter']"> My Profile </a>
+          </li>
+        </ul>
+
+      </div>
         <p> </p>
 
-        <button type="button" class="btn btn-outline-success ms-3 me-2" *ngIf="!isLoggedIn"> <a class="nav-link" [routerLink]="['/auth']" > Login </a> </button>
-        <button type="button" class="btn btn-outline-success ms-3 me-2" (click)="clickLogout()" *ngIf="isLoggedIn"> <a class="nav-link" [routerLink]="['/home']" > Logout </a> </button>
+        <button type="button" class="btn btn-outline-success ms-3 me-2" *ngIf="!isLoggedIn && !hideButtonLoginSignUp" > <a class="nav-link" [routerLink]="['/auth']" > Login </a> </button>
+        <button type="button" class="btn btn-outline-success ms-3 me-2" (click)="clickLogout()" *ngIf="isLoggedIn && !hideButtonLoginSignUp"> <a class="nav-link" [routerLink]="['/home']" > Logout </a> </button>
 
 
       </div>

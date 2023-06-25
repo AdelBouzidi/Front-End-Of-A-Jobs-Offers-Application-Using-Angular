@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { ShowApplyButtonService } from '../services/show-apply-button.service';
+import { JobResponse } from '../Job-Response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-offer',
@@ -12,8 +14,11 @@ export class OfferComponent implements OnInit{
   jobs: any;
   jobClicked = false;
   appBtn : boolean = false;
+  jobFormTemplate : any;
+  jobtoSend : JobResponse;
 
-  constructor(private http: HttpClient, private show : ShowApplyButtonService) {
+
+  constructor(private http: HttpClient, private show : ShowApplyButtonService, private _router : Router) {
   }
   ngOnInit(): void {
     if(this.show.CandidateOnline() == true && this.show.RecruiterOnline() == false){
@@ -31,7 +36,9 @@ export class OfferComponent implements OnInit{
       }
       return gets;
     })).subscribe(response => {
-       console.log(response);
+      //  console.log(response);
+      //  console.log(response);
+
       this.jobs = response;
     });
   }
@@ -41,6 +48,12 @@ export class OfferComponent implements OnInit{
   }
   HideDescription(){
     this.jobClicked= false;
+  }
+
+  ShowMoreClicked(job: any){
+    this.jobFormTemplate = job;
+    // console.log(encodeURIComponent(JSON.stringify(job)));
+    this._router.navigate(['/child'], { queryParams: { myData: encodeURIComponent(JSON.stringify(job)) } });
   }
 
 }

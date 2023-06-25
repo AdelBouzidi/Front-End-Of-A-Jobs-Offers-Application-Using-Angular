@@ -1,3 +1,28 @@
 input.ng-invalid.ng-touched{
     border: 1px solid red;
 }
+/* input.ng-valid.ng-touched{
+  border: 1px solid rgb(47, 255, 95);
+} */
+
+::placeholder {
+    font-size: var(--placeholder-font-size);
+  }
+
+  .text-gray {
+    color: gray;
+  }
+  
+  .fs-14 {
+    font-size: 14px;
+  }
+
+  textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+/* textarea.ng-valid.ng-touched{
+  border: 1px solid rgb(47, 255, 95);
+} */
+
+

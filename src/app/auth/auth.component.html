@@ -1,59 +1,238 @@
-<section class="vh-100" style="background-color: #6e700031;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-xl-10">
-          <div class="card" style="border-radius: 1rem;">
-            <div class="row g-0">
-              <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                <div class="card-body p-4 p-lg-5 text-black">
+<section class="vh-200" style="background-color: #6e700031;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
 
-                  <form (ngSubmit)="onFormSubmit()" #f="ngForm">
-  
-                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                <form (ngSubmit)="onFormSubmit()" #f="ngForm" *ngIf="!signUpClicked">
 
-                    
-                    <div class="form-outline mb-4">
-                      <input type="email" class="form-control form-control-lg" id="email" name="email" autocomplete="email" ngModel required email #email="ngModel"/>
-                      <span *ngIf="!email.valid &&email.touched">please enter a valid email <br></span>
-                      <label class="form-label" for="form2Example17">Email address</label>
-                    </div>
-  
-                    <div class="form-outline mb-4">
-                      <input type="password" class="form-control form-control-lg" id="password" name="password" autocomplete="current-password" ngModel required #password="ngModel"/>
-                      <span *ngIf="!password.valid &&password.touched">please enter a password <br></span>
-                      <label class="form-label" for="form2Example27">Password</label>
-                    </div>
-                    <div class="form-outline mb-4">
-                      <select class="form-control" name="user" id="user" aria-label=".form-select-lg example" ngModel>
-                        <option value="recruiter">Recruiter</option>
-                        <option value="candidate">Candidate</option>
-                      </select>
-                      <label for="user">Login As</label>
-                    </div>
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
-  
+                  
+                  <div class="form-outline mb-4">
+                    <input type="email" class="form-control form-control-lg" id="email" name="email" autocomplete="email" ngModel required email #email="ngModel"/>
+                    <span *ngIf="!email.valid &&email.touched">please enter a valid email <br></span>
+                    <label class="form-label" for="form2Example17">Email address</label>
+                  </div>
 
-                    <p class="text-danger" *ngIf="errorMssg"> Something went wrong <br> <br></p>
-  
-                    <div class="pt-1 mb-4" *ngIf="!isLoading">
-                      <button class="btn btn-dark btn-lg btn-block" type="submit">Login </button>
-                    </div>
+                  <div class="form-outline mb-4">
+                    <input type="password" class="form-control form-control-lg" id="password" name="password" autocomplete="current-password" ngModel required #password="ngModel"/>
+                    <span *ngIf="!password.valid &&password.touched">please enter a password <br></span>
+                    <label class="form-label" for="form2Example27">Password</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <select class="form-control" name="user" id="user" aria-label=".form-select-lg example" ngModel>
+                      <option value="recruiter">Recruiter</option>
+                      <option value="candidate">Candidate</option>
+                    </select>
+                    <label for="user">Login As</label>
+                  </div>
 
-                    <div class="pt-1 mb-4" *ngIf="isLoading">
-                      <app-loading-spinner></app-loading-spinner>
-                    </div>
 
-                    <a class="small text-muted" href="#!">Forgot password?</a>
-                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
-                        style="color: #393f81;">sign up</a></p>
-                    <!-- <a href="#!" class="small text-muted">Terms of use.</a>
-                    <a href="#!" class="small text-muted">Privacy policy</a> -->
-                  </form>
+
+                  <p class="text-danger" *ngIf="errorMssg"> Something went wrong <br> <br></p>
+
+                  <div class="pt-1 mb-4" *ngIf="!isLoading">
+                    <button class="btn btn-dark btn-lg btn-block" type="submit">Login </button>
+                  </div>
+
+                  <div class="pt-1 mb-4" *ngIf="isLoading">
+                    <app-loading-spinner></app-loading-spinner>
+                  </div>
+
+                  <a class="small text-muted" href="#!">Forgot password?</a>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? 
+                      <button type="button" class="btn btn-link" (click)="signUp()">sign up</button>
+                    </p>
+                  <!-- <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a> -->
+                </form>
+
+
+                <div class="form-outline mb-4" *ngIf="signUpClicked">
+                  
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create a new account</h5>
+
+
+                  <select class="form-control" name="Sign Up As" id="Sign Up As" 
+                  aria-label=".form-select-lg example" [(ngModel)]="signupAS"
+                  [ngStyle]="{'background-color': condition ? '#54B4D3' : 'transparent'}" 
+                  (change)="onChange()"
+                  placeholder="Recruiter || Candidate"
+                  >
+                    <option value="" disabled selected>
+                      Recruiter Or Candidate ?</option>
+                    <option value="recruiter" (click)="selectClicked()">
+                      Recruiter</option>
+                    <option value="candidate" (click)="selectClicked()">
+                      Candidate</option>
+                  </select>
+                  <label for="Sign Up As">Sign Up As</label>
                 </div>
+
+
+
+
+
+                <form (ngSubmit)="onFormSubmitRecruiter()" #g="ngForm" *ngIf="signUpClicked && signupAS =='recruiter'">
+
+                  
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Firstname" class="form-control form-control-lg" autocomplete="FIRSTNAME" [(ngModel)]="recDefaultValues.firstname" required #Firstnameid = 'ngModel' >
+                    <!-- ki theb tnahi tow way binding nahi [(ngModel)]="signUP.firstname" w dir f plasetha ngModel. -->
+                    <span  class="text-danger" *ngIf="!Firstnameid.valid && Firstnameid.touched">please enter a valid Firstname <br></span>
+                    <label class="form-label" for="firstnameRecruiter">Firstname</label>
+                  </div>
+
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Lastname" class="form-control form-control-lg" autocomplete="LASTNAME" [(ngModel)]="recDefaultValues.lastname" required #lastnameid = 'ngModel' >
+                    <span  class="text-danger" *ngIf="!lastnameid.valid && lastnameid.touched">please enter a valid Lastname <br></span>
+                    <label class="form-label" for="lastnameRecruiter">Lastname</label>
+                  </div>
+
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Email" class="form-control form-control-lg" autocomplete="EMAIL" [(ngModel)]="recDefaultValues.email" required email #emailid = 'ngModel' >
+                    <span  class="text-danger" *ngIf="!emailid.valid && emailid.touched">please enter a valid Email address <br></span>
+                    <label class="form-label" for="emailRecruiter">Email address</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" class="form-control form-control-lg" id="passwordRecruiter" name="Password" placeholder="The password length must be between 8 and 30 characters." style="--placeholder-font-size: 14px;" autocomplete="current-password" [(ngModel)]="recDefaultValues.password" required #password="ngModel"/>
+                    <span class="text-danger" *ngIf="!password.valid &&password.touched">please enter a password <br></span>
+                    <span class="text-danger" *ngIf="errorMessagePassword">
+                      Le champ doit avoir une longueur comprise entre 8 et 30 caractères. <br>
+                    </span>
+                    <label class="form-label" for="passwordRecruiter">Password</label>
+                  </div>
+
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Phone" class="form-control form-control-lg" autocomplete="PHONE" [(ngModel)]="recDefaultValues.phone" required #Phoneid = 'ngModel' >
+                    <span class="text-danger" *ngIf="!Phoneid.valid && Phoneid.touched">please enter a valid Phone number</span>
+                    <label class="form-label" for="phoneRecruiter">Phone</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <textarea class="form-control" rows="6" cols="40" name="Description" placeholder="The length of this field must not exceed 200 characters." [(ngModel)]="recDefaultValues.Description" required #descriptionid = 'ngModel'>{{recDefaultValues.Description.length}}</textarea>
+                    <span class="text-danger" *ngIf="errorMessageDescription">
+                      The length of this field must not exceed 200 characters.
+                    </span>
+                    <span class="text-danger" *ngIf="!descriptionid.valid && descriptionid.touched">please enter a valid Description <br></span>
+                    <label class="form-label" for="descriptionRecruiter">Description
+                    </label>
+
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <select class="form-control" name="Gender" id="gender" aria-label=".form-select-lg example" [(ngModel)]="recDefaultValues.gender">
+                     
+                      <option value="" disabled selected>
+                        Male Or Female ?</option>
+                      <option value="1">male</option>
+                    
+                      <option value="2">female</option>
+                    </select>
+                    <label for="genderRecruiter">Gender</label>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-dark btn-lg btn-block" type="submit">Signup </button>
+                  </div>
+
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">back to login page? 
+                      <button type="button" class="btn btn-link" (click)="LoginUp()">login</button>
+                  </p>
+
+
+
+                </form>
+
+
+                <form (ngSubmit)="onFormSubmitCandidate()" #h="ngForm" *ngIf="signUpClicked && signupAS =='candidate'">
+
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Firstname" class="form-control form-control-lg" autocomplete="FIRSTNAME" [(ngModel)]="cndDefaultValues.firstname" required #Firstnameid = 'ngModel' >
+                    <!-- ki theb tnahi tow way binding nahi [(ngModel)]="signUP.firstname" w dir f plasetha ngModel. -->
+                    <span class="text-danger" *ngIf="!Firstnameid.valid && Firstnameid.touched">please enter a valid Firstname</span>
+                    <label class="form-label" for="firstnameCandidate">Firstname</label>
+                  </div>
+
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Lastname" class="form-control form-control-lg" autocomplete="LASTNAME" [(ngModel)]="cndDefaultValues.lastname" required #lastnameid = 'ngModel' >
+                    <span class="text-danger" *ngIf="!lastnameid.valid && lastnameid.touched">please enter a valid Lastname</span>
+                    <label class="form-label" for="lastnameCandidate">Lastname</label>
+                  </div>
+
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Email" class="form-control form-control-lg" autocomplete="EMAIL" [(ngModel)]="cndDefaultValues.email" required email #emailid = 'ngModel' >
+                    <span class="text-danger" *ngIf="!emailid.valid && emailid.touched">please enter a valid Email address</span>
+                    <label class="form-label" for="emailCandidate">Email address</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" class="form-control form-control-lg" id="passwordcandidate" name="Password" autocomplete="current-password" [(ngModel)]="cndDefaultValues.password" required #password="ngModel"/>
+                    <span class="text-danger" *ngIf="!password.valid &&password.touched">please enter a password <br> </span>
+                    <span class="text-danger" *ngIf="errorMessagePassword2">
+                      Le champ doit avoir une longueur comprise entre 8 et 30 caractères. <br>
+                    </span>
+                    <label class="form-label" for="passwordCandidate">Password</label>
+                  </div>
+
+                  <div class="form-outline mb-4">  
+                    <input type = "text" name = "Phone" class="form-control form-control-lg" autocomplete="PHONE" [(ngModel)]="cndDefaultValues.phone" required #Phoneid = 'ngModel' >
+                    <span  class="text-danger" *ngIf="!Phoneid.valid && Phoneid.touched">please enter a valid Phone number</span>
+                    <label class="form-label" for="phoneCandidate">Phone</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <select class="form-control" name="MilitaryService" id="military service" aria-label=".form-select-lg example" [(ngModel)]="cndDefaultValues.militaryService">
+                      <option value="" disabled selected>
+                        Passed OR Not Yet ?</option>
+                      <option value="passed">Passed</option>
+                      <option value="not-yet">Not Yet</option>
+                    </select>
+                    <label for="military-service">military service</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <textarea class="form-control" rows="6" cols="40" name="Description"  [(ngModel)]="cndDefaultValues.Description" required #descriptionid = 'ngModel'></textarea>
+                    <span class="text-danger" *ngIf="errorMessageDescription2">
+                      The length of this field must not exceed 200 characters
+                    </span>
+                    <span class="text-danger" *ngIf="!descriptionid.valid && descriptionid.touched">please enter a valid Description <br></span>
+                    <label class="form-label" for="descriptionCandidate">Description</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <select class="form-control" name="Gender" id="enderCandidate" aria-label=".form-select-lg example" [(ngModel)]="cndDefaultValues.gender">
+                      <option value="" disabled selected>
+                        Male Or Female ?</option>
+                      <option value="1">male</option>
+                      <option value="2">female</option>
+                    </select>
+                    <label for="gender">Gender</label>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-dark btn-lg btn-block" type="submit"> Signup </button>
+                  </div>
+
+
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">back to login page? 
+                    <button type="button" class="btn btn-link" (click)="LoginUp()">login</button>
+                  </p>
+
+                </form>
+
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
